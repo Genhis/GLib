@@ -1,0 +1,16 @@
+mysql:
+  enable: false
+  host: localhost
+  user: 
+  pass: 
+  db: minecraft
+
+#Advanced permissions
+permissions:
+  reload_plugins: false
+
+merge_config: true
+debug: false
+
+#Don't change this!
+file_version: 1.4

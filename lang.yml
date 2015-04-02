@@ -1,0 +1,17 @@
+messages:
+  no_permission: Nemas opravnenie pre tuto cinnost!
+  bad_sender: Tento prikaz moze pouzit len hrac!
+  command_not_found: 'Prikaz neexistuje! Pouzitie: %usage%'
+  args:
+    few: Prilis malo argumentov!
+    many: Prilis vela argumentov!
+  editor:
+    use: Tento editor sa uz pouziva!
+    no_use: Pre tento prikaz musis mat aktivny editor!
+  executor:
+    itembinder: Tento prikaz musi byt vykonany pomocou pluginu ItemBinder!
+  action:
+    successed: Akcia bola uspesne vykonana!
+    failed: Akciu nebolo mozne vykonat!
+
+file_version: 1.4

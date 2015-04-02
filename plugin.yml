@@ -1,0 +1,32 @@
+name: GLib
+description: Core for my plugins
+author: Genhis
+website: http://genhis.6f.sk/
+main: sk.genhis.glib.GLib
+version: 1.4
+commands:
+  glib:
+    usage: /<command> help
+    permission: glib.glib
+    permission-message: You don't have permission for this!
+permissions:
+  glib.*:
+    default: op
+    children:
+      glib.glib: true
+  glib.glib:
+    default: op
+  glib.glib.*:
+    default: op
+    children:
+      glib.glib.help: true
+      glib.glib.reload: true
+      glib.glib.reload.*: true
+  glib.glib.reload:
+    default: op
+  glib.glib.reload.*:
+    default: op
+    children:
+      glib.glib.reload.all: true
+  glib.glib.reload.all:
+    default: op
