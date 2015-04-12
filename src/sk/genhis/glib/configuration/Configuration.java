@@ -10,6 +10,7 @@ public final class Configuration extends FileConfiguration {
 	
 	public Configuration(FileConfiguration config) {
 		this.setDefaults(config);
+		this.options().copyDefaults(true);
 	}
 	
 	public UUID getUID() {
