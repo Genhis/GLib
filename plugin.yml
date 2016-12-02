@@ -3,7 +3,7 @@ description: Core for my plugins
 author: Genhis
 website: http://genhis.6f.sk/
 main: sk.genhis.glib.GLib
-version: 1.4
+version: 1.4.1
 commands:
   glib:
     usage: /<command> help
