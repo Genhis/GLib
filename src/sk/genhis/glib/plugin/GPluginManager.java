@@ -170,8 +170,8 @@ public final class GPluginManager {
 		}
 		
 		try {
-			Map loaderMap = (Map)this.loadersF.get(jpl);
-			loaderMap.remove(plugin.getDescription().getName());
+			List loaderList = (List)this.loadersF.get(jpl);
+			loaderList.remove(plugin.getDescription().getName());
 		}
 		catch (IllegalArgumentException ex) {
 			ex.printStackTrace();
