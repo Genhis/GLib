@@ -4,6 +4,7 @@ author: Genhis
 website: http://genhis.6f.sk/
 main: sk.genhis.glib.GLib
 version: 1.4.1
+api-version: 1.13
 commands:
   glib:
     usage: /<command> help
