@@ -2,7 +2,6 @@ package sk.genhis.glib.configuration;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.logging.Level;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -73,9 +72,9 @@ public final class Config implements IYMLFile {
 		final File file = new File(this.plugin.getDataFolder(), this.file);
 		this.config = YamlConfiguration.loadConfiguration(file);
 		
-		final InputStream defaultConfig = this.plugin.getResource(this.file);
-		if(defaultConfig != null) {
-			final FileConfiguration newConfig = YamlConfiguration.loadConfiguration(defaultConfig);
+		//final InputStream defaultConfig = this.plugin.getResource(this.file);
+		if(file != null) {
+			final FileConfiguration newConfig = YamlConfiguration.loadConfiguration(file);
 			if(!this.config.getString("file_version", "0").equalsIgnoreCase(newConfig.getString("file_version"))) {
 				if(!this.config.getBoolean("merge_config", true)) {
 					this.logger.log("File version is different! Removing file " + this.file);
