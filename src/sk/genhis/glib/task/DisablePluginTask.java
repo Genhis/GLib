@@ -12,7 +12,7 @@ public final class DisablePluginTask implements GTask {
 	}
 	
 	public void run() {
-		GLib.getPluginManager().unloadPlugin(this.plugin);
+		//GLib.getPluginManager().unloadPlugin(this.plugin);
 	}
 	
 	public String getName() {

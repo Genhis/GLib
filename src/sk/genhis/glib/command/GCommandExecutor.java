@@ -26,8 +26,8 @@ public final class GCommandExecutor implements CommandExecutor {
 		if(perm == null)
 			Bukkit.getPluginManager().addPermission(perm = new Permission(permission));
 		perm.addParent(p[p.length - 1] + ".*", true);
-		
-		GLib.getPluginManager().registerCommand(plugin, cmd, permission).setExecutor(this);
+		//TODO removed pluginmanager instance
+		//GLib.getPluginManager().registerCommand(plugin, cmd, permission).setExecutor(this);
 	}
 	
 	public boolean onCommand(CommandSender s, org.bukkit.command.Command cmd, String label, String[] args) {

@@ -28,7 +28,7 @@ public abstract class GPlugin extends JavaPlugin {
 		this.checkRegister();
 		this.glibOperations();
 		if(this.enable() && this.isEnabled()) {
-			GLib.loadPlugin(this);
+			//GLib.loadPlugin(this);
 			this.getOwnLogger().log("Enabled! (" + (System.currentTimeMillis() - startTime) + "ms)");
 		}
 		
@@ -38,7 +38,7 @@ public abstract class GPlugin extends JavaPlugin {
 	@Override
 	public final void onDisable() {
 		final long startTime = System.currentTimeMillis();
-		GLib.unloadPlugin(this);
+		//GLib.unloadPlugin(this);
 		this.disable();
 		this.getOwnLogger().log("Disabled! (" + (System.currentTimeMillis() - startTime) + "ms)");
 		

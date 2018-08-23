@@ -35,7 +35,7 @@ public final class GLib extends JavaPlugin {
 	private static final Map<String, RegisteredEditor> editors = new HashMap<String, RegisteredEditor>();
 	private static final Map<String, GPlugin> plugins = new HashMap<String, GPlugin>();
 	private static final GScheduler scheduler = new GScheduler();
-	private static final GPluginManager pluginManager = new GPluginManager();
+	//private static final GPluginManager pluginManager = new GPluginManager();
 	
 	private static final Pattern IPv4 = Pattern.compile("(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])");
 	private static final Pattern IPv6 = Pattern.compile("([0-9a-f]{1,4}:){7}([0-9a-f]){1,4}");
@@ -70,13 +70,13 @@ public final class GLib extends JavaPlugin {
 	
 	public void onDisable() {
 		GLib.unregisterEditors();
-		GLib.unloadPlugins();
+		//GLib.unloadPlugins();
 		//GLib.enabled = false;
 		GLib.config = null;
 		GLib.lang = null;
 		GLib.mysql = null;
 	}
-	
+	/*
 	public void onReload() {
 		GLib.unregisterEditors();
 		GLib.reloadPlugins();
@@ -108,7 +108,7 @@ public final class GLib extends JavaPlugin {
 		for(GPlugin p : GLib.plugins.values())
 			p.onReload();
 	}
-	
+	*/
 	public static RegisteredEditor registerEditor(Editor editor, JavaPlugin plugin) {
 		if(!GLib.checkEnabled())
 			return null;
@@ -220,11 +220,11 @@ public final class GLib extends JavaPlugin {
 	public static GScheduler getScheduler() {
 		return GLib.scheduler;
 	}
-	
+	/*
 	public static GPluginManager getPluginManager() {
 		return GLib.pluginManager;
 	}
-	
+	*/
 	public static RegisteredEditor getEditor(String name) {
 		return GLib.editors.get(name);
 	}
