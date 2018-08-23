@@ -2,9 +2,11 @@ package sk.genhis.glib.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -53,7 +55,7 @@ public final class MySQL {
 			this.conn.close();
     }
     
-    public ResultSet query(String query) throws SQLException {
+    public ResultSet query(String query, Object... values) throws SQLException {
 		if(!GLib.checkEnabled())
 			return null;
 		if(this.conn.isClosed())
@@ -62,12 +64,15 @@ public final class MySQL {
 		ResultSet result = null;
 		final MySQLQueryEvent e = new MySQLQueryEvent(this.plugin, this, query, false);
 		Bukkit.getPluginManager().callEvent(e);
-		if(!e.isCancelled())
-			result = this.conn.prepareStatement(query).executeQuery();
+		if(!e.isCancelled()) {
+			PreparedStatement ps = this.conn.prepareStatement(query);
+			prepare(ps, values);
+			result = ps.executeQuery();
+		}
 		return result;
     }
     
-    public void uquery(String query) throws SQLException {
+    public void uquery(String query, Object... values) throws SQLException {
 		if(!GLib.checkEnabled())
 			return;
 		if(this.conn.isClosed())
@@ -75,8 +80,12 @@ public final class MySQL {
 		
 		final MySQLQueryEvent e = new MySQLQueryEvent(this.plugin, this, query, true);
 		Bukkit.getPluginManager().callEvent(e);
-		if(!e.isCancelled())
-			this.conn.prepareStatement(query).executeUpdate();
+		if(!e.isCancelled()) {
+			PreparedStatement ps = this.conn.prepareStatement(query);
+			prepare(ps, values);
+			ps.executeUpdate();
+		}
+			
     }
     
     public void multiUquery(String query) throws SQLException {
@@ -93,6 +102,24 @@ public final class MySQL {
 				e.printStackTrace();
 		}
 		return true;
+	}
+	
+	public void prepare(PreparedStatement ps, Object... values) {
+		try {
+			for(int i = 0; i < values.length; i++) {
+				if(values[i] instanceof String) {
+					ps.setString(i+1, (String)values[i]);
+				} else if (values[i] instanceof Integer) {
+					ps.setInt(i+1, (int)values[i]);
+				} else if (values[i] instanceof Double) {
+					ps.setDouble(i+1, (double)values[i]);
+				} else if (values[i] instanceof Long) {
+					ps.setLong(i+1, (long)values[i]);
+				}
+			}
+		} catch (SQLException e) {
+			this.plugin.getLogger().log(Level.WARNING, "Error parsing value to prepared statement", e);
+		}
 	}
 	
 	public UUID getUID() {
