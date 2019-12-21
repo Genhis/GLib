@@ -4,20 +4,28 @@
   <artifactId>glib</artifactId>
   <version>1.4.1</version>
   <name>GLib</name>
+  <description>Core for my plugins</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
   <repositories>
-      <repository>
+    <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
   </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.13-R0.1-SNAPSHOT</version>
+      <version>1.14.4-R0.1-SNAPSHOT</version>
       <type>jar</type>
     </dependency>
   </dependencies>
+
   <build>
 	<directory>target</directory>
       <resources>
@@ -44,5 +52,4 @@
       </plugin>
     </plugins>
   </build>
-  <description>Core for my plugins</description>
 </project>
