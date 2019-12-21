@@ -21,7 +21,6 @@ import sk.genhis.glib.editor.RegisteredEditor;
 import sk.genhis.glib.listener.BukkitListener;
 import sk.genhis.glib.mysql.MySQL;
 import sk.genhis.glib.plugin.GPlugin;
-import sk.genhis.glib.plugin.GPluginManager;
 import sk.genhis.glib.scheduler.GScheduler;
 
 public final class GLib extends JavaPlugin {
