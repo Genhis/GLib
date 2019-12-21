@@ -26,8 +26,8 @@ public final class Config implements IYMLFile {
 		this.plugin = plugin;
 		this.logger = plugin instanceof GPlugin ? ((GPlugin)plugin).getOwnLogger() : GLib.getLog();
 		this.file = file + ".yml";
-		this.saveConfig(); //vytvorenie configu v prÌpade, ûe neexistuje
-		this.loadFile(); //naËÌtanie configu
+		this.saveConfig(); //vytvorenie configu v pr√≠pade, ≈æe neexistuje
+		this.loadFile(); //naƒç√≠tanie configu
 	}
 	
 	private void saveConfig() {
