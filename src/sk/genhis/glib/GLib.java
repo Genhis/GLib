@@ -29,19 +29,15 @@ public final class GLib extends JavaPlugin {
 	private static Configuration config = null;
 	private static Configuration lang = null;
 	private static MySQL mysql = null;
-	//private static boolean enabled = false;
 	
 	private static final Map<String, RegisteredEditor> editors = new HashMap<String, RegisteredEditor>();
 	private static final Map<String, GPlugin> plugins = new HashMap<String, GPlugin>();
 	private static final GScheduler scheduler = new GScheduler();
-	//private static final GPluginManager pluginManager = new GPluginManager();
 	
 	private static final Pattern IPv4 = Pattern.compile("(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])");
 	private static final Pattern IPv6 = Pattern.compile("([0-9a-f]{1,4}:){7}([0-9a-f]){1,4}");
 	
 	public void onEnable() {
-		//GLib.enabled = true;
-		
 		GLib.plugin = this;
 		GLib.logger = new Logger(this);
 		GLib.config = new Configuration(new Config(this).getConfig());
@@ -69,45 +65,11 @@ public final class GLib extends JavaPlugin {
 	
 	public void onDisable() {
 		GLib.unregisterEditors();
-		//GLib.unloadPlugins();
-		//GLib.enabled = false;
 		GLib.config = null;
 		GLib.lang = null;
 		GLib.mysql = null;
 	}
-	/*
-	public void onReload() {
-		GLib.unregisterEditors();
-		GLib.reloadPlugins();
-		
-		this.onEnable();
-	}
-	
-	public static void loadPlugin(GPlugin plugin) {
-		GLib.plugins.put(plugin.getName(), plugin);
-	}
-	
-	public static void unloadPlugin(GPlugin plugin) {
-		GLib.plugins.remove(plugin);
-	}
-	
-	private static void unloadPlugins() {
-		for(GPlugin p : GLib.plugins.values()) {
-			GLib.getLog().log(p.getName());
-			GLib.getPluginManager().unloadPlugin(p);
-			GLib.unloadPlugin(p);
-		}
-	}
-	
-	public static void reloadPlugin(String plugin) {
-		GLib.plugins.get(plugin).onReload();
-	}
-	
-	private static void reloadPlugins() {
-		for(GPlugin p : GLib.plugins.values())
-			p.onReload();
-	}
-	*/
+
 	public static RegisteredEditor registerEditor(Editor editor, JavaPlugin plugin) {
 		if(!GLib.checkEnabled())
 			return null;
@@ -182,9 +144,6 @@ public final class GLib extends JavaPlugin {
 	}
 	
 	public static boolean checkEnabled() {
-		//if(!GLib.enabled)
-			//TODO: GLib.logger.log("This function is disabled, because GLib is disabled.", Level.WARNING);
-		//return GLib.enabled;
 		return true;
 	}
 	
@@ -219,11 +178,7 @@ public final class GLib extends JavaPlugin {
 	public static GScheduler getScheduler() {
 		return GLib.scheduler;
 	}
-	/*
-	public static GPluginManager getPluginManager() {
-		return GLib.pluginManager;
-	}
-	*/
+
 	public static RegisteredEditor getEditor(String name) {
 		return GLib.editors.get(name);
 	}

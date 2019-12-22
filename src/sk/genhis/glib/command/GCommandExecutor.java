@@ -9,7 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
 
-import sk.genhis.glib.GLib;
 import sk.genhis.glib.command.CommandException;
 import sk.genhis.glib.plugin.GPlugin;
 
@@ -26,8 +25,6 @@ public final class GCommandExecutor implements CommandExecutor {
 		if(perm == null)
 			Bukkit.getPluginManager().addPermission(perm = new Permission(permission));
 		perm.addParent(p[p.length - 1] + ".*", true);
-		//TODO removed pluginmanager instance
-		//GLib.getPluginManager().registerCommand(plugin, cmd, permission).setExecutor(this);
 	}
 	
 	public boolean onCommand(CommandSender s, org.bukkit.command.Command cmd, String label, String[] args) {
