@@ -4,6 +4,8 @@ import sk.genhis.glib.GLib;
 import sk.genhis.glib.plugin.GPlugin;
 import sk.genhis.glib.scheduler.GTask;
 
+@Deprecated
+@SuppressWarnings("unused")
 public final class DisablePluginTask implements GTask {
 	private final GPlugin plugin;
 	
